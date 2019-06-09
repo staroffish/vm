@@ -144,6 +144,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on iommu=pt kvm_amd.npt=1 vfio-pci.ids=100
 ```
 sudo update-initramfs -u -k all
 sudo update-grub 
+systemctl disable lightdm.service
 ```
 重启计算机  
 通过另一台主机ssh连接到host主机上
