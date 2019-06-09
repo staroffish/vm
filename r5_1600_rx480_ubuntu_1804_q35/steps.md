@@ -197,4 +197,4 @@ virsh start win10
 
 # Issues
 1. 安装windows以后，windows更新中安装的显卡驱动可以正常运行，但是安装官网最新驱动后显示器黑屏，且重启也无法修复。但是默认驱动玩游戏问题不大(只测试了OW和hitman2)
-2. CPU性能下降的比较厉害
+2. CPU性能下降的比较厉害,可能是因为CPU没有用host-passthrough的原因，但是用了host-passthrough后在安装windows的时候会蓝屏
