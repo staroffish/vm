@@ -3,7 +3,7 @@
 例如核显供host用，独显直通给guest用。  
 但是AMD的CPU往往不带有核显，用的电脑也往往只有一张显卡，  
 所以这里的步骤对网上的文章做了些修改整合，来达到单GPU也能直通的目的。  
-<font color=red><b>由于只有一张显卡，直通显卡后host主机画面将不会输出到显示器,所以需要另一台主机使用ssh登陆host来进行后续操作。</b></font>  
+<b>由于只有一张显卡，直通显卡后host主机画面将不会输出到显示器,所以需要另一台主机使用ssh登陆host来进行后续操作。</b>
 如果你使用的硬件和我的不同，这里的步骤大概率需要调整。  
 由于这些步骤都是整合自网上的文章且没有做步骤的最小化验证，这里的步骤不一定每一步都是需要的。
 
@@ -34,12 +34,12 @@ https://www.reddit.com/r/VFIO/comments/616xih/gpu_passthrough_with_msi_b350_toma
 
 
 # Steps:
-## **准备工作**
+## 准备工作
 在windows下使用 GPU-Z 提取GPU的ROM, Linux的提取方法请自行google.  
 安装需要的软件，在linux中执行  `sudo apt-get install libvirt-bin bridge-utils virt-manager qemu-kvm ovmf`
 
 
-## **开启SVM和IOMMU**
+## 开启SVM和IOMMU
 在BIOS中打开CPU的SVM和IOMMU选项，设置UEFI启动模式，而不是UEFI+Legacy模式，进入系统修改 `/etc/default/grub` 文件  
 在 `GRUB_CMDLINE_LINUX_DEFAULT` 变量中追加 `amd_iommu=on iommu=pt kvm_amd.npt=1`  
 例:
@@ -58,7 +58,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on iommu=pt kvm_amd.npt=1"
 [ 0.794688] AMD-Vi: Lazy IO/TLB flushing enabled 
 ```
 
-## **定位显卡的IOMMU Group**
+## 定位显卡的IOMMU Group
 IOMMU在直通时以IOMMU Group为最小单位，
 所以先要找到显卡的IOMMU Group 并记录下来
 在终端执行下面的脚本  
@@ -96,8 +96,8 @@ IOMMU group 18
 ```
 后面的操作中我都会以我的PCI设备为准。你需要将这些设备号都替换成自己机器的设备号
   
-## **从host上剥离显卡,并启用VFIO模块**
-<font color=red>注意：这个步骤之后，主机的host上的GPU将会被剥离，导致host主机不会有任何画面输出</font>  
+## 从host上剥离显卡,并启用VFIO模块
+<b>注意：这个步骤之后，主机的host上的GPU将会被剥离，导致host主机不会有任何画面输出</b>
 
 只需要剥离显卡相关的设备即可，USB控制器在启动guest系统时由系统自动剥离
 
@@ -150,7 +150,7 @@ sudo update-grub
 执行 `lspci -nnv` 并找到显卡的条目  
 如果显卡的条目中显示 `Kernel driver in use: vfio-pci ` 则说明显卡剥离成功
 
-## **禁用apparmor对libvirt的访问限制**
+## 禁用apparmor对libvirt的访问限制
 由于我们创建的的虚拟机文件并没有使用libvirt的pool和volume,
 所以apparmor会禁止我们访问这些文件，需要将libvirt加入到apparmor的禁用列表中
 ```
@@ -158,11 +158,11 @@ ln -s /etc/apparmor.d/usr.sbin.libvirtd /etc/apparmor.d/disable/usr.sbin.libvirt
 ln -s /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper /etc/apparmor.d/disable/usr.lib.libvirt.virt-aa-helper
 ```
 
-## **创建虚拟机**
+## 创建虚拟机
 
 创建虚拟机磁盘 `qemu-img create -f raw win10.img 100G`  
 
-修改虚拟机的xml文件中需要替换的部分()  
+修改虚拟机的xml文件中需要替换的部分(https://github.com/staroffish/kvm_gpu_passthrough/blob/master/r5_1600_rx480_ubuntu_1804/win10.xml)  
 关于替换部分的详细如下
 
 ```
