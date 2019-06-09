@@ -1,3 +1,3 @@
 # kvm_gpu_passthrough
 
-这个项目用来记录使用kvm进行gpu passthrough时的一些步骤
+本项目用来记录使用kvm进行gpu passthrough时的步骤
