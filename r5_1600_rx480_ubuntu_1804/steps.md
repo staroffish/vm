@@ -162,7 +162,8 @@ ln -s /etc/apparmor.d/usr.lib.libvirt.virt-aa-helper /etc/apparmor.d/disable/usr
 
 创建虚拟机磁盘 `qemu-img create -f raw win10.img 100G`  
 
-修改虚拟机的xml文件中需要替换的部分(https://github.com/staroffish/kvm_gpu_passthrough/blob/master/r5_1600_rx480_ubuntu_1804/win10.xml)  
+修改虚拟机的xml文件中需要替换的部分  
+(https://github.com/staroffish/kvm_gpu_passthrough/blob/master/r5_1600_rx480_ubuntu_1804/win10.xml)  
 关于替换部分的详细如下
 
 ```
