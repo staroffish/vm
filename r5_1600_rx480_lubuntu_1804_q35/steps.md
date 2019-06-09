@@ -27,11 +27,15 @@ qemu-kvm: 2.11
 libvirt: 4.00  
 guest os: windows10 2019 LTSC
 
-# Reference:
+# Special thanks:
+**Mathias Hueber**  
 http://mathiashueber.com/ryzen-based-virtual-machine-passthrough-setup-ubuntu-18-04/  
-https://gitlab.com/YuriAlek/vfio  
-https://www.reddit.com/r/VFIO/comments/616xih/gpu_passthrough_with_msi_b350_tomahawk/
 
+**Yuri**  
+https://gitlab.com/YuriAlek/vfio  
+
+**u/srwalter**  
+https://www.reddit.com/r/VFIO/comments/616xih/gpu_passthrough_with_msi_b350_tomahawk/
 
 # Steps:
 ## 准备工作
