@@ -13,7 +13,7 @@
 2. 另一台能够连接 host主机 的主机
 3. windows的virtio driver (https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/)
 4. windowns 10的镜像文件
-5. 命令行操作的linux的能力
+5. 命令行操作linux的能力
 
 # Hardware:
 cpu: amd ryzen r5 1600  
