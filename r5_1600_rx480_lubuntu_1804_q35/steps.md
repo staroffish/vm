@@ -198,7 +198,7 @@ virsh start win10
 
 注1: 因为该xml文件中选择直接引导硬盘所以还没有安装系统的时候会卡在EFI的界面，此时输入exit退出EFI界面，可进入BIOS界面在BIOS中选择光盘启动就可以安装系统了
 
-注2: 因为使用了virtio半虚拟化io，所以在安装windows时会找不到硬盘，需要手动加载virtio驱动 具体路径 cdrom:/viostor/w10/amd64
+注2: 因为使用了virtio半虚拟化io，所以在安装windows时会找不到硬盘，需要手动加载virtio驱动 具体路径 {cdrom}:/viostor/w10/amd64
 
 # Issues
 1. 安装windows以后，windows更新中安装的显卡驱动可以正常运行，但是安装官网最新驱动后显示器黑屏，且重启也无法修复。但是默认驱动玩游戏问题不大(只测试了OW和hitman2)
