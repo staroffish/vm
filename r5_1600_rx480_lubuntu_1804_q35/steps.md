@@ -18,7 +18,7 @@
 # Hardware:
 cpu: amd ryzen r5 1600  
 mb: msi b350m mortar  
-mem: 8*2 ddr4
+mem: 8*2 ddr4  
 gpu: rx480 8G
 
 # Software:
